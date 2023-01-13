@@ -1,5 +1,18 @@
 <p>home works!</p>
 
-<ul>
-    <li *ngFor="let info of input">{{info | json}}</li>
-</ul>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Titulo</th>
+        <th scope="col">Titulo</th>
+        <th scope="col">Revisar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let info of input">
+        <td>{{info | json}}</td>
+        <td>{{info[1] | json}}</td>
+        <td><button>Revisar</button></td>
+      </tr>
+    </tbody>
+  </table>
