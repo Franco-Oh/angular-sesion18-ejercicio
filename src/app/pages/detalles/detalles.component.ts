@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
+import { ActivatedRoute, } from '@angular/router';
 
 @Component({
   selector: 'app-detalles',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetallesComponent implements OnInit {
 
-  constructor() { }
+  //Base de datos
+  info:any=[];
+
+  //Para seleccionar el numero de detalle
+  detalles!:any;
+
+  constructor(private rutaActiva:ActivatedRoute, private data:DataService) { }
 
   ngOnInit(): void {
+    this.data.getAll().subscribe( data => this.info = data) //base de datos
+    this.detalles = this.rutaActiva.snapshot.params; //para obtener los parametros de detalles
+    console.log(this.detalles);
   }
 
 }
